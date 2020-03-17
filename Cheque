@@ -1,0 +1,59 @@
+package poly;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class Cheque extends Payment {
+	private String chequeNo;
+	private int chequeAmount;
+	private Date dateOfIssue;
+	public String getChequeNo() {
+		return chequeNo;
+	}
+	public void setChequeNo(String chequeNo) {
+		this.chequeNo = chequeNo;
+	}
+	public int getChequeAmount() {
+		return chequeAmount;
+	}
+	public void setChequeAmount(int chequeAmount) {
+		this.chequeAmount = chequeAmount;
+	}
+	public Date getDateOfIssue() {
+		return dateOfIssue;
+	}
+	public void setDateOfIssue(Date dateOfIssue) {
+		this.dateOfIssue = dateOfIssue;
+	}
+
+    public boolean payAmount() throws ParseException 
+    {
+                    
+                    String str_date="01-07-2019";
+                    String end_date="01-01-2020";
+                    SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                    Date  startDate = formatter.parse(str_date);
+                    Date  endDate = (Date)formatter.parse(end_date);
+                    boolean is1After2 = startDate.after( dateOfIssue);
+                    System.out.println(is1After2);
+                    boolean is2Before3 = dateOfIssue.before( endDate );
+                    if(is1After2==true && is2Before3==true)
+                    {
+                                    if(chequeAmount>=getDueAmount())
+                                    {
+                                                    return true;
+                                    }
+                                    return false;
+                    }
+                    
+                    return false; 
+                    
+                    
+
+                    
+                    
+    }
+    
+	
+}
