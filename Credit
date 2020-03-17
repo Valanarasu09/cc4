@@ -1,0 +1,80 @@
+package poly;
+
+public class Credit extends Payment {
+	private int creditCardNo;
+	 
+	private String cardType;
+	 
+	private int creditCardAmount;
+
+	public int getCreditCardNo() {
+		return creditCardNo;
+	}
+
+	public void setCreditCardNo(int creditCardNo) {
+		this.creditCardNo = creditCardNo;
+	}
+
+	public String getCardType() {
+		return cardType;
+	}
+
+	public void setCardType(String cardType) {
+		this.cardType = cardType;
+	}
+
+	public int getCreditCardAmount() {
+		return creditCardAmount;
+	}
+
+	public void setCreditCardAmount(int creditCardAmount) {
+		this.creditCardAmount = creditCardAmount;
+	}
+	public boolean payAmount() {
+		
+		int d;
+		if(cardType=="silver")
+		{
+			creditCardAmount=10000;
+			d=getDueAmount()*(2/100);
+			if(creditCardAmount < d+getDueAmount())
+			{
+				return false;
+			}
+			else {
+				creditCardAmount-=(getDueAmount()+d);
+				return true;
+			}
+			
+		}
+		else if(cardType=="gold")
+		{
+			creditCardAmount=50000;
+			d=getDueAmount()*(5/100);
+			if(creditCardAmount < d+getDueAmount())
+			{
+				return false;
+			}
+			else {
+				creditCardAmount-=(getDueAmount()+d);
+				return true;
+			}
+			
+		}
+		else
+		{
+			creditCardAmount=100000;
+			d=getDueAmount()*(10/100);
+			if(creditCardAmount < d+getDueAmount())
+			{
+				return false;
+			}
+			else {
+				creditCardAmount-=(getDueAmount()+d);
+				return true;
+			}
+		}
+	
+	}
+
+}
