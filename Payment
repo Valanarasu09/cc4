@@ -1,0 +1,22 @@
+package poly;
+
+import java.text.ParseException;
+
+public class Payment {
+	private int dueAmount;
+
+	public int getDueAmount() {
+		return dueAmount;
+	}
+
+	public void setDueAmount(int dueAmount) {
+		this.dueAmount = dueAmount;
+	}
+	public boolean payAmount() throws ParseException {
+		if(dueAmount==0)
+		{
+		return true;
+		}
+		return false;
+	}
+}
