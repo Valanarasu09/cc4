@@ -1,0 +1,27 @@
+package poly;
+
+import java.text.ParseException;
+
+public class Bill {
+	public String processPayment (Payment obj) throws ParseException {
+		if(obj.payAmount()) {
+			if(obj instanceof Cash)
+			{
+			return "Payment done successfully via cash";
+			}
+			else if(obj instanceof Cheque)
+			{
+				
+				return "Payment done successfully via cheque";
+			}
+			else
+			{
+				return "Payment done successfully via creditcard";
+			}
+		}
+		else
+		{
+			return "Payment not done and your due amount is "+obj.getDueAmount(); 
+		}
+	}
+}
