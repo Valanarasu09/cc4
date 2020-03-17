@@ -1,0 +1,61 @@
+package poly;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) throws ParseException {
+		// TODO Auto-generated method stub
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter the due Amount:");
+		int due = Integer.parseInt(input.nextLine());
+		System.out.println("Enter the mode of payment(cheque/cash/credit:");
+		String paymode = input.nextLine();
+		Bill ba = new Bill();
+		if(paymode.equals("cash")) {
+			Cash ca = new Cash();
+			System.out.println("Enter the cash amount:");
+			int cash = Integer.parseInt(input.nextLine());
+			ca.setDueAmount(due);
+			ca.setCashAmount(cash);
+			System.out.println(ba.processPayment(ca));
+		}
+		else if(paymode.equals("credit"))
+		{
+			Credit cr = new Credit();
+			System.out.println("Enter the creditcard number:");
+			int num = Integer.parseInt(input.nextLine());
+			cr.setCreditCardNo(num);
+			System.out.println("Enter the creditcardtype:");
+			String type = input.nextLine();
+			cr.setCardType(type);
+			System.out.println("Enter the creditcardAmount:");
+			int amount = Integer.parseInt(input.nextLine());
+			cr.setCreditCardAmount(amount);
+			System.out.println(ba.processPayment(cr));
+			
+		}
+		else
+		{
+			Cheque ch = new Cheque();
+			System.out.println("Enter the cheque number:");
+			String chnum = input.nextLine();
+			ch.setChequeNo(chnum);
+			System.out.println("Enter the cheqe amount:");
+			int am = Integer.parseInt(input.nextLine());
+			ch.setChequeAmount(am);
+			System.out.println("Enter the date of issue");
+			String date=input.nextLine();
+			SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            Date  startDate = (Date)formatter.parse(date);
+            ch.setDateOfIssue(startDate);
+            System.out.println(ba.processPayment(ch));
+		}
+		
+
+	}
+
+}
